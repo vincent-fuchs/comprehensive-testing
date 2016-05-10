@@ -30,7 +30,7 @@
         <version.jacoco>0.7.5.201505241946</version.jacoco>
     </properties>
     <modules>
-        <module>rest-microservices-product</module>
+        <module>rest-microservices-cart</module>
         <module>rest-microservices-country</module>
         <module>rest-microservices-volatility-index</module>
     </modules>

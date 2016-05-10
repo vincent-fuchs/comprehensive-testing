@@ -1,4 +1,4 @@
-package org.example.product;
+package org.example.cart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,9 +11,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ProductRestfulApp {
+public class CartRestfulApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProductRestfulApp.class, args);
+        SpringApplication.run(CartRestfulApp.class, args);
     }
 }
