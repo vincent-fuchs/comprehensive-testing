@@ -6,9 +6,9 @@
         <artifactId>cloud-services</artifactId>
         <version>1.0.0.BUILD-SNAPSHOT</version>
     </parent>
-    <artifactId>rest-microservices-product</artifactId>
+    <artifactId>rest-microservices-cart</artifactId>
     <properties>
-        <start-class>org.example.product.ProductRestfulApp</start-class>
+        <start-class>org.example.product.CartRestfulApp</start-class>
     </properties>
     <dependencies>
         <!-- Test Dependencies -->
