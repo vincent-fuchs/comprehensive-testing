@@ -1,5 +1,3 @@
-*.class
-
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -12,7 +10,9 @@
 hs_err_pid*
 
 
-/target/
+/rest-microservices-cart/target
+/rest-microservices-country/target
+/rest-microservices-volatility-index/target
 
 # IntelliJ
 .idea/
