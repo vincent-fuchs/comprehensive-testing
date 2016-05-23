@@ -3,7 +3,7 @@ Feature: Adding the product in the right risk bucket
 
   Background:
     Given the rating associated to the countries are as follows :
-      | country | rating | shouldOverride |
+      | countryCode | rating | shouldOverride |
       | FRA     | 1      | false          |
       | USA     | 2      | false          |
       | JAP     | 4      | false          |
@@ -19,7 +19,7 @@ Feature: Adding the product in the right risk bucket
   unless country is flagged as overriding  in that case, country will take precedence
 
     Given I am interested in these products :
-      | productName | issuingCountry | volatilityIndex |
+      | name | issuingCountry | volatilityIndex |
       | ISIN123     | FRA            | A               |
       | ISIN456     | FRA            | C               |
       | ISIN789     | FRA            | E               |
