@@ -1,6 +1,7 @@
 package com.github.vincent_fuchs.comprehensive_testing;
 
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,11 +32,11 @@ public class RiskComputer {
     }
 
     private void initVolitalityIndexRiskRating() {
-        volatilityIndexRiskRating = new HashMap<>();
+        volatilityIndexRiskRating = new EnumMap(VolatilityIndex.class);
         volatilityIndexRiskRating.put(VolatilityIndex.A, HIGH);
         volatilityIndexRiskRating.put(VolatilityIndex.B, HIGH);
         volatilityIndexRiskRating.put(VolatilityIndex.C, MEDIUM);
-        volatilityIndexRiskRating.put(VolatilityIndex.D, LOW);
+        volatilityIndexRiskRating.put(VolatilityIndex.D, MEDIUM);
         volatilityIndexRiskRating.put(VolatilityIndex.E, LOW);
     }
 
