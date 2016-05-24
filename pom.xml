@@ -23,7 +23,7 @@
         <lombok.version>1.16.6</lombok.version>
         <cucumber.version>1.2.4</cucumber.version>
         <gson.version>2.2.4</gson.version>
-        <assertj.version>3.2.0</assertj.version>
+        <assertj.version>3.4.1</assertj.version>
         <jsonassert.version>1.2.3</jsonassert.version>
         <easymock.version>3.1</easymock.version>
         <spring.version>4.2.5.RELEASE</spring.version>

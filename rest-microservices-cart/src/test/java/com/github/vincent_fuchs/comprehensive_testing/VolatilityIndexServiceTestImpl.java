@@ -7,17 +7,16 @@ import java.util.Map;
 
 public class VolatilityIndexServiceTestImpl implements VolatilityIndexService {
 
-    Map<String,Character> volatilityByProduct=new HashMap<>();
+    private Map<String, ProductWithVolatilityIndex> volatilityByProduct = new HashMap<>();
 
     public VolatilityIndexServiceTestImpl(List<ProductWithVolatilityIndex> products) {
-
-        for(ProductWithVolatilityIndex product : products){
-            volatilityByProduct.put(product.getName(),product.getVolatilityIndex());
+        for (ProductWithVolatilityIndex product : products) {
+            volatilityByProduct.put(product.getName(), product);
         }
     }
 
     @Override
-    public char getVolatilityIndexForProduct(String productName) {
+    public ProductWithVolatilityIndex getVolatilityIndexForProduct(String productName) {
         return volatilityByProduct.get(productName);
     }
 }
