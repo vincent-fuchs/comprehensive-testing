@@ -1,4 +1,4 @@
-package com.github.vincent_fuchs.comprehensive_testing;
+package com.github.vincent_fuchs.comprehensive_testing.convenient_classes_for_test;
 
 import lombok.Data;
 

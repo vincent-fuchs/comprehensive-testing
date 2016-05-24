@@ -1,4 +1,7 @@
-package com.github.vincent_fuchs.comprehensive_testing;
+package com.github.vincent_fuchs.comprehensive_testing.convenient_classes_for_test;
+
+import com.github.vincent_fuchs.comprehensive_testing.CountryRating;
+import com.github.vincent_fuchs.comprehensive_testing.CountryRatingService;
 
 import java.util.HashMap;
 import java.util.List;

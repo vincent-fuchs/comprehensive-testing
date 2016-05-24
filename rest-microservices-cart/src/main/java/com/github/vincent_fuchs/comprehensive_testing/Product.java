@@ -9,4 +9,10 @@ public class Product {
 
     private String issuingCountry;
 
+    public Product(String name, String issuingCountry) {
+
+        this.name=name;
+        this.issuingCountry=issuingCountry;
+
+    }
 }

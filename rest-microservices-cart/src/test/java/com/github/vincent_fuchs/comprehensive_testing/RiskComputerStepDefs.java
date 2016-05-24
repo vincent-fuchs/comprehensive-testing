@@ -1,10 +1,10 @@
 package com.github.vincent_fuchs.comprehensive_testing;
 
+import com.github.vincent_fuchs.comprehensive_testing.convenient_classes_for_test.*;
 import com.google.common.collect.ImmutableMap;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.assertj.core.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +30,10 @@ public class RiskComputerStepDefs {
     public void i_am_interested_in_these_products(List<ProductWithVolatilityIndex> products) throws Throwable {
         VolatilityIndexService volatilityIndexService = new VolatilityIndexServiceTestImpl(products);
         riskComputer.setVolatilityIndexService(volatilityIndexService);
+
+        ProductService productService = new ProductServiceTestImpl(products);
+        riskComputer.setProductService(productService);
+
         productsIamInterestedIn.addAll(products.stream().map(ProductWithVolatilityIndex::getName).collect(Collectors.toList()));
     }
 

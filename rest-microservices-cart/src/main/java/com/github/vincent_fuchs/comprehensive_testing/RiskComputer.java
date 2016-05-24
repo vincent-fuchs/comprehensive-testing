@@ -10,7 +10,10 @@ public class RiskComputer {
     private CountryRatingService countryRatingService;
     private VolatilityIndexService volatilityIndexService;
 
-    private Map<String, Risk> volatilityIndexRiskRating;
+
+    private ProductService productService;
+
+    private Map<VolatilityIndex, Risk> volatilityIndexRiskRating;
     private Map<Integer, Risk> countryRiskRating;
 
     public RiskComputer() {
@@ -29,11 +32,11 @@ public class RiskComputer {
 
     private void initVolitalityIndexRiskRating() {
         volatilityIndexRiskRating = new HashMap<>();
-        volatilityIndexRiskRating.put("A", HIGH);
-        volatilityIndexRiskRating.put("B", HIGH);
-        volatilityIndexRiskRating.put("C", MEDIUM);
-        volatilityIndexRiskRating.put("D", LOW);
-        volatilityIndexRiskRating.put("E", LOW);
+        volatilityIndexRiskRating.put(VolatilityIndex.A, HIGH);
+        volatilityIndexRiskRating.put(VolatilityIndex.B, HIGH);
+        volatilityIndexRiskRating.put(VolatilityIndex.C, MEDIUM);
+        volatilityIndexRiskRating.put(VolatilityIndex.D, LOW);
+        volatilityIndexRiskRating.put(VolatilityIndex.E, LOW);
     }
 
     public void setCountryRatingService(CountryRatingService countryRatingService) {
@@ -44,14 +47,19 @@ public class RiskComputer {
         this.volatilityIndexService = volatilityIndexService;
     }
 
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
+    }
+
     public Risk computeRisk(String productNameIadd) {
-        ProductWithVolatilityIndex volatilityIndexForProduct = volatilityIndexService.getVolatilityIndexForProduct(productNameIadd);
-        CountryRating countryRating = countryRatingService.getRating(volatilityIndexForProduct.getIssuingCountry());
+        Product product = productService.getProductFromName(productNameIadd);
+        VolatilityIndex volatilityIndexForProduct = volatilityIndexService.getVolatilityIndexForProduct(productNameIadd);
+        CountryRating countryRating = countryRatingService.getRating(product.getIssuingCountry());
         return countryRating.isShouldOverride() ? countryRiskRating.get(countryRating.getRating()) : getRiskBucket(countryRating, volatilityIndexForProduct);
     }
 
-    private Risk getRiskBucket(CountryRating countryRating, ProductWithVolatilityIndex volatilityIndexForProduct) {
-        Risk volatilityIndexRisk = volatilityIndexRiskRating.get(volatilityIndexForProduct.getVolatilityIndex());
+    private Risk getRiskBucket(CountryRating countryRating, VolatilityIndex volatilityIndexForProduct) {
+        Risk volatilityIndexRisk = volatilityIndexRiskRating.get(volatilityIndexForProduct);
         Risk countryRisk = countryRiskRating.get(countryRating.getRating());
         // TODO : refactor
         return HIGH == volatilityIndexRisk || HIGH == countryRisk ? HIGH : (MEDIUM == volatilityIndexRisk || MEDIUM == countryRisk ? MEDIUM : LOW);
