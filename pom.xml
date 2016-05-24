@@ -34,6 +34,7 @@
         <module>rest-microservices-cart</module>
         <module>rest-microservices-country</module>
         <module>rest-microservices-volatility-index</module>
+        <module>rest-microservices-product</module>
     </modules>
     <dependencyManagement>
         <dependencies>
