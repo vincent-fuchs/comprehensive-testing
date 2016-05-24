@@ -18,7 +18,7 @@ public class RiskComputer {
     private Map<Integer, Risk> countryRiskRating;
 
     public RiskComputer() {
-        initVolitalityIndexRiskRating();
+        initVolatilityIndexRiskRating();
         initCountryRiskRating();
     }
 
@@ -31,7 +31,7 @@ public class RiskComputer {
         countryRiskRating.put(5, LOW);
     }
 
-    private void initVolitalityIndexRiskRating() {
+    private void initVolatilityIndexRiskRating() {
         volatilityIndexRiskRating = new EnumMap(VolatilityIndex.class);
         volatilityIndexRiskRating.put(VolatilityIndex.A, HIGH);
         volatilityIndexRiskRating.put(VolatilityIndex.B, HIGH);
