@@ -8,7 +8,7 @@
     </parent>
     <artifactId>rest-microservices-cart</artifactId>
     <properties>
-        <start-class>org.example.cart.CartRestfulApp</start-class>
+        <start-class>com.github.vincent_fuchs.comprehensive_testing.CartRestfulApp</start-class>
     </properties>
     <dependencies>
         <!-- Test Dependencies -->
