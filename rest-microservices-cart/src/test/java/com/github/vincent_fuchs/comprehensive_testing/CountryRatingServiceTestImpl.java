@@ -6,18 +6,16 @@ import java.util.Map;
 
 public class CountryRatingServiceTestImpl implements CountryRatingService {
 
-    Map<String,CountryRating> countryRatings=new HashMap<>();
+    private Map<String, CountryRating> countryRatings = new HashMap<>();
 
-    public CountryRatingServiceTestImpl(List<CountryRating> ratings){
-        for(CountryRating rating : ratings){
-
-            countryRatings.put(rating.getCountryCode(), rating );
-
+    public CountryRatingServiceTestImpl(List<CountryRating> ratings) {
+        for (CountryRating rating : ratings) {
+            countryRatings.put(rating.getCountryCode(), rating);
         }
     }
 
     @Override
     public CountryRating getRating(String countryCode) {
-        return null;
+        return countryRatings.get(countryCode);
     }
 }
