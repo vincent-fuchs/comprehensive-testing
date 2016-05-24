@@ -48,7 +48,7 @@ Feature: Adding the product in the right risk bucket
       | ISIN654     | MEDIUM     | country and volatility = medium -> medium                 |
       | ISIN321     | MEDIUM     | country =  medium > volatility =  low                     |
       | ISIN741     | HIGH       | country =  low < volatility =  high                       |
-      | ISIN852     | LOW        | country =  low < volatility =  medium                     |
+      | ISIN852     | MEDIUM     | country =  low < volatility =  medium                     |
       | ISIN963     | LOW        | country and volatility = low -> low                       |
       | ISIN147     | HIGH       | country (with override) and volatility = high -> high     |
       | ISIN258     | HIGH       | country (with override) = high > volatility = medium      |
@@ -60,4 +60,3 @@ Feature: Adding the product in the right risk bucket
       | ISIN486     | LOW        | country (with override) =  low > volatility =  medium     |
       | ISIN426     | LOW        | country (with override) and volatility = low -> low       |
 
-    #Are you sure | ISIN852     | MEDIUM     | country =  low < volatility =  medium                     |
