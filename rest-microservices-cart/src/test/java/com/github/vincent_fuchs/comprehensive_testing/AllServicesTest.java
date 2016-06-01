@@ -43,7 +43,7 @@ public class AllServicesTest {
         initRegistryServer();
     }
 
-    private static void initRegistryServer() throws IOException {
+    public static void initRegistryServer() throws IOException {
         String registryServerJarLocation = getRegistryServerJarLocation();
         String registryServerJarName = "registry-server.jar";
         URL registryUrl = new URL("http://localhost:8761/info");
