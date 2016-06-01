@@ -11,5 +11,10 @@ public class ComputedRisk {
 
     private String comment;
 
+    public ComputedRisk(String productName,String riskBucket){
 
+        this.productName=productName;
+        this.riskBucket=riskBucket;
+
+    }
 }

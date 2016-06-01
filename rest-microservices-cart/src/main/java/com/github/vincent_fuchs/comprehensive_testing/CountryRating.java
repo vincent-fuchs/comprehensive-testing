@@ -11,4 +11,10 @@ public class CountryRating {
 
     private boolean shouldOverride;
 
+    public CountryRating(String countryCode, int rating, boolean shouldOverride){
+        this.countryCode=countryCode;
+        this.rating=rating;
+        this.shouldOverride=shouldOverride;
+    }
 }
+

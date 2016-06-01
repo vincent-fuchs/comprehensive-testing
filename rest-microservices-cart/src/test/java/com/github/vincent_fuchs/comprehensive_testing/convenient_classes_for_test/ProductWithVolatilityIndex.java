@@ -10,4 +10,9 @@ public class ProductWithVolatilityIndex extends Product {
     public ProductWithVolatilityIndex(String name, String issuingCountry){
         super(name,issuingCountry);
     }
+
+    public ProductWithVolatilityIndex(String name, String issuingCountry, String volatilityIndex){
+        super(name,issuingCountry);
+        this.volatilityIndex=volatilityIndex;
+    }
 }
