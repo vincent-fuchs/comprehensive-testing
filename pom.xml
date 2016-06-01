@@ -31,10 +31,10 @@
     </properties>
     <modules>
         <module>registry-server</module>
-        <module>rest-microservices-cart</module>
         <module>rest-microservices-country</module>
         <module>rest-microservices-volatility-index</module>
         <module>rest-microservices-product</module>
+        <module>rest-microservices-cart</module>
     </modules>
     <dependencyManagement>
         <dependencies>
