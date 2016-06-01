@@ -75,8 +75,8 @@ public class AllServicesTest {
     private static String getRegistryServerJarLocation() {
         ClassLoader currentClassLoader = AllServicesTest.class.getClassLoader();
         String currentPath = new File(currentClassLoader.getResource("").getPath()).getParent();
-        String parentLocation = StringUtils.removeEnd(currentPath, "/rest-microservices-cart/target");
-        return parentLocation + "/registry-server/target";
+        String parentLocation = StringUtils.removeEnd(currentPath, File.separator+"rest-microservices-cart"+File.separator+"target");
+        return parentLocation + File.separator+"registry-server"+File.separator+"target";
     }
 
     @Test
