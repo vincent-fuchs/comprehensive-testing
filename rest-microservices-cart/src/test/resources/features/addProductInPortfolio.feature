@@ -1,5 +1,4 @@
 @UnitTest
-@IntegrationTest
 Feature: Adding the product in the right risk bucket
   In order to make an informed decision as an individual investor I want to know the risk of the products I'm interested in
 

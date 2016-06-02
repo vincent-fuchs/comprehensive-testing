@@ -1,6 +1,6 @@
 spring:
   application:
-    name: COUNTRY-SERVICES
+    name: country-service
 
 server:
   port: 7070
