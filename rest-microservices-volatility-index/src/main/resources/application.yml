@@ -1,9 +1,9 @@
 spring:
   application:
-    name: VOLATILITY-INDEX-SERVICES
+    name: volatility-index-service
 
 server:
-  port: 8080
+  port: 9090
 
 
 eureka:

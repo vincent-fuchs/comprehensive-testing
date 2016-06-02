@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +42,37 @@ public class AllServicesTest {
     @BeforeClass
     public static void initServers() throws IOException {
         initRegistryServer();
+        initCountryServer();
+        initProductServer();
+        initVolatilityIndexServer();
     }
 
     public static void initRegistryServer() throws IOException {
-        String registryServerJarLocation = getRegistryServerJarLocation();
+        String registryServerJarLocation = getServerJarLocation("registry-server");
         String registryServerJarName = "registry-server.jar";
         URL registryUrl = new URL("http://localhost:8761/info");
+        createProcess(registryServerJarLocation, registryServerJarName, registryUrl);
+    }
+
+
+    public static void initCountryServer() throws MalformedURLException {
+        String registryServerJarLocation = getServerJarLocation("rest-microservices-country");
+        String registryServerJarName = "rest-microservices-country.jar";
+        URL registryUrl = new URL("http://localhost:7070/info");
+        createProcess(registryServerJarLocation, registryServerJarName, registryUrl);
+    }
+
+    public static void initProductServer() throws MalformedURLException {
+        String registryServerJarLocation = getServerJarLocation("rest-microservices-product");
+        String registryServerJarName = "rest-microservices-product.jar";
+        URL registryUrl = new URL("http://localhost:8080/info");
+        createProcess(registryServerJarLocation, registryServerJarName, registryUrl);
+    }
+
+    public static void initVolatilityIndexServer() throws MalformedURLException {
+        String registryServerJarLocation = getServerJarLocation("rest-microservices-volatility-index");
+        String registryServerJarName = "rest-microservices-volatility-index.jar";
+        URL registryUrl = new URL("http://localhost:9090/info");
         createProcess(registryServerJarLocation, registryServerJarName, registryUrl);
     }
 
@@ -55,16 +81,21 @@ public class AllServicesTest {
             Process process = new ProcessBuilder("java", "-jar", jarName)
                     .directory(new File(jarLocation)).start();
             RestTemplate template = new TestRestTemplate();
-            Thread.sleep(10000);
-            for (int i = 0; i <= 5; i++) {
+            Thread.sleep(20000);
+            int i = 0;
+            for (; i <= 5; i++) {
                 try {
                     template.getForEntity(urlToTest.toString(), String.class);
                     processes.add(process);
+                    LOGGER.info(urlToTest + " is up <----------");
                     break;
                 } catch (RestClientException rce) {
                     LOGGER.error(urlToTest + " is not up yet");
                 }
                 Thread.sleep(10000);
+            }
+            if (i == 5) {
+                throw new AssertionError("Couldn't run 'java -jar " + jarName + "' on location : " + jarLocation);
             }
         } catch (Exception ex) {
             LOGGER.error("Couldn't start the sever : ", ex);
@@ -72,11 +103,11 @@ public class AllServicesTest {
         }
     }
 
-    private static String getRegistryServerJarLocation() {
+    private static String getServerJarLocation(String serverFolderName) {
         ClassLoader currentClassLoader = AllServicesTest.class.getClassLoader();
         String currentPath = new File(currentClassLoader.getResource("").getPath()).getParent();
-        String parentLocation = StringUtils.removeEnd(currentPath, File.separator+"rest-microservices-cart"+File.separator+"target");
-        return parentLocation + File.separator+"registry-server"+File.separator+"target";
+        String parentLocation = StringUtils.removeEnd(currentPath, File.separator + "rest-microservices-cart" + File.separator + "target");
+        return parentLocation + File.separator + serverFolderName + File.separator + "target";
     }
 
     @Test
