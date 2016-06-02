@@ -1,18 +1,10 @@
-package com.github.vincent_fuchs.comprehensive_testing;
+package com.github.vincent_fuchs.comprehensive_testing.integration;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,15 +25,6 @@ public class AllServicesTest {
     private static Logger LOGGER = LoggerFactory.getLogger(AllServicesTest.class);
 
     private static List<Process> processes = new ArrayList<>();
-
-
-    @BeforeClass
-    public static void initServers() throws IOException {
-        initRegistryServer();
-        initCountryServer();
-        initProductServer();
-        initVolatilityIndexServer();
-    }
 
     public static void initRegistryServer() throws IOException {
         String registryServerJarLocation = getServerJarLocation("registry-server");
@@ -77,7 +60,7 @@ public class AllServicesTest {
             Process process = new ProcessBuilder("java", "-jar", jarName)
                     .directory(new File(jarLocation)).start();
             RestTemplate template = new TestRestTemplate();
-            Thread.sleep(20000);
+            Thread.sleep(60000);
             int i = 0;
             for (; i <= 5; i++) {
                 try {
@@ -106,12 +89,6 @@ public class AllServicesTest {
         return parentLocation + File.separator + serverFolderName + File.separator + "target";
     }
 
-    @Test
-    public void test() {
-
-    }
-
-    @AfterClass
     public static void destroyServers() {
         if (CollectionUtils.isNotEmpty(processes)) {
             processes.forEach(Process::destroy);

@@ -1,6 +1,5 @@
 package com.github.vincent_fuchs.comprehensive_testing.integration;
 
-import com.github.vincent_fuchs.comprehensive_testing.AllServicesTest;
 import com.github.vincent_fuchs.comprehensive_testing.CartRestfulApp;
 import com.github.vincent_fuchs.comprehensive_testing.unit.model.ComputedRisk;
 import com.github.vincent_fuchs.comprehensive_testing.unit.model.ProductWithVolatilityIndex;
@@ -24,7 +23,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.github.vincent_fuchs.comprehensive_testing.AllServicesTest.*;
+import static com.github.vincent_fuchs.comprehensive_testing.integration.AllServicesTest.*;
 
 @ContextConfiguration(name = "cart-service", classes = CartRestfulApp.class, loader = SpringApplicationContextLoader.class)
 @WebAppConfiguration
@@ -57,7 +56,7 @@ public class RiskComputerStepDef {
     }
 
     private void waitForFewSecondsForAutoRegistration() throws InterruptedException {
-        Thread.sleep(30000);
+        Thread.sleep(60000);
     }
 
     @When("^I add them in my portfolio$")
