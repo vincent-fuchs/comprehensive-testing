@@ -1,7 +1,5 @@
 package com.github.vincent_fuchs.comprehensive_testing.model;
 
-import lombok.Getter;
-
 public enum VolatilityIndex {
 
     A("A"),
@@ -10,20 +8,24 @@ public enum VolatilityIndex {
     D("D"),
     E("E");
 
-    @Getter
-    private String index;
+    private String value;
 
-    VolatilityIndex(String index) {
-        this.index = index;
+    VolatilityIndex(String value) {
+        this.value = value;
     }
 
     public static VolatilityIndex getEnum(String index) {
         VolatilityIndex[] values = VolatilityIndex.values();
         for (VolatilityIndex value : values) {
-            if (index.equals(value.getIndex())) {
+            if (index.equals(value.toString())) {
                 return value;
             }
         }
         throw new UnsupportedOperationException("Could not find VolatilityIndex enum for " + index);
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }

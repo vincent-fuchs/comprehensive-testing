@@ -32,7 +32,7 @@ public class CartService {
     public String getProductRisk(String productName) {
         String productCountry = productService.getProductCountry(productName);
         CountryRating countryRating = countryService.getRating(productCountry);
-        return countryRating.isShouldOverride() ? computeCountryRisk(countryRating).getRisk() : getRiskBucket(productName, countryRating);
+        return countryRating.isShouldOverride() ? computeCountryRisk(countryRating).toString() : getRiskBucket(productName, countryRating);
     }
 
     private String getRiskBucket(String productName, CountryRating countryRating) {
@@ -40,7 +40,7 @@ public class CartService {
         Risk volatilityIndexRisk = computeVolatilityIndexRisk(productVolatilityIndex);
         Risk countryRisk = computeCountryRisk(countryRating);
         // TODO : refactor
-        return HIGH == volatilityIndexRisk || HIGH == countryRisk ? HIGH.getRisk() : (MEDIUM == volatilityIndexRisk || MEDIUM == countryRisk ? MEDIUM.getRisk() : LOW.getRisk());
+        return HIGH == volatilityIndexRisk || HIGH == countryRisk ? HIGH.toString() : (MEDIUM == volatilityIndexRisk || MEDIUM == countryRisk ? MEDIUM.toString() : LOW.toString());
     }
 
     private Risk computeCountryRisk(CountryRating countryRating) {
