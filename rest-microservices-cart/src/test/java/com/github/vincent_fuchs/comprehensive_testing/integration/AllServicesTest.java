@@ -60,7 +60,7 @@ public class AllServicesTest {
             Process process = new ProcessBuilder("java", "-jar", jarName)
                     .directory(new File(jarLocation)).start();
             RestTemplate template = new TestRestTemplate();
-            Thread.sleep(60000);
+            Thread.sleep(10000);
             int i = 0;
             for (; i <= 5; i++) {
                 try {
