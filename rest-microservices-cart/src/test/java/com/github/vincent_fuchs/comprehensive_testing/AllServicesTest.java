@@ -28,10 +28,6 @@ import java.util.List;
  *
  * @author <a href="mailto:paul58914080@gmail.com">Paul Williams</a>
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CartRestfulApp.class)
-@WebAppConfiguration
-@IntegrationTest
 public class AllServicesTest {
 
     private static Logger LOGGER = LoggerFactory.getLogger(AllServicesTest.class);
