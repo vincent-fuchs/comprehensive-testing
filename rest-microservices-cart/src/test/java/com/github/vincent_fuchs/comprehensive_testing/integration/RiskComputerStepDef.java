@@ -1,8 +1,8 @@
 package com.github.vincent_fuchs.comprehensive_testing.integration;
 
 import com.github.vincent_fuchs.comprehensive_testing.CartRestfulApp;
-import com.github.vincent_fuchs.comprehensive_testing.unit.model.ComputedRisk;
-import com.github.vincent_fuchs.comprehensive_testing.unit.model.ProductWithVolatilityIndex;
+import com.github.vincent_fuchs.comprehensive_testing.model.ComputedRisk;
+import com.github.vincent_fuchs.comprehensive_testing.model.ProductWithVolatilityIndex;
 import com.google.common.collect.ImmutableMap;
 import cucumber.api.DataTable;
 import cucumber.api.java.After;
@@ -10,7 +10,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.boot.test.TestRestTemplate;
@@ -73,7 +73,7 @@ public class RiskComputerStepDef {
         for (ComputedRisk computedRisk : expectedComputedRisksAsString) {
             builder.put(computedRisk.getProductName(), computedRisk.getRiskBucket());
         }
-        Assertions.assertThat(computedRisks).containsAllEntriesOf(builder.build());
+        assertThat(computedRisks).containsAllEntriesOf(builder.build());
     }
 
     @After

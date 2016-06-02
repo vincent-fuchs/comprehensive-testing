@@ -1,4 +1,4 @@
-package com.github.vincent_fuchs.comprehensive_testing.unit.model;
+package com.github.vincent_fuchs.comprehensive_testing.model;
 
 import lombok.Data;
 
@@ -8,15 +8,15 @@ import lombok.Data;
  * @author <a href="mailto:paul58914080@gmail.com">Paul Williams</a>
  */
 @Data
-public class ProductCountry {
+public class Product {
     private String productName;
     private String countryCode;
 
-    public ProductCountry() {
+    public Product() {
         super();
     }
 
-    public ProductCountry(String productName, String countryCode) {
+    public Product(String productName, String countryCode) {
         setProductName(productName);
         setCountryCode(countryCode);
     }
