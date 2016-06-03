@@ -26,4 +26,8 @@ public enum Risk {
     public String toString() {
         return value;
     }
+
+    public static Risk max(Risk risk1, Risk risk2) {
+        return risk1.compareTo(risk2)<=0 ? risk1 : risk2;
+    }
 }

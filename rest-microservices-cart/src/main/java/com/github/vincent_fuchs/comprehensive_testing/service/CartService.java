@@ -39,8 +39,7 @@ public class CartService {
         String productVolatilityIndex = volatilityIndexService.getProductVolatilityIndex(productName);
         Risk volatilityIndexRisk = computeVolatilityIndexRisk(productVolatilityIndex);
         Risk countryRisk = computeCountryRisk(countryRating);
-        // TODO : refactor
-        return HIGH == volatilityIndexRisk || HIGH == countryRisk ? HIGH.toString() : (MEDIUM == volatilityIndexRisk || MEDIUM == countryRisk ? MEDIUM.toString() : LOW.toString());
+        return Risk.max(volatilityIndexRisk,countryRisk).toString();
     }
 
     private Risk computeCountryRisk(CountryRating countryRating) {

@@ -5,6 +5,9 @@ spring:
 server:
   port: 8080
 
+info:
+  Service: Product Service
+  Version: 1.0.0
 
 eureka:
   client:

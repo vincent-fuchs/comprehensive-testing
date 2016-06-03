@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.TestRestTemplate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -64,9 +65,9 @@ public class AllServicesTest {
             int i = 0;
             for (; i <= 5; i++) {
                 try {
-                    template.getForEntity(urlToTest.toString(), String.class);
+                    ResponseEntity<String> response = template.getForEntity(urlToTest.toString(), String.class);
                     processes.add(process);
-                    LOGGER.info(urlToTest + " is up <----------");
+                    LOGGER.info(urlToTest + " is up <----------" + response.getBody());
                     break;
                 } catch (RestClientException rce) {
                     LOGGER.error(urlToTest + " is not up yet");

@@ -5,6 +5,9 @@ spring:
 server:
   port: 6060
 
+info:
+  Service: Cart Service
+  Version: 1.0.0
 
 eureka:
   client:

@@ -5,6 +5,9 @@ spring:
 server:
   port: 9090
 
+info:
+  Service: Volatility Index Service
+  Version: 1.0.0
 
 eureka:
   client:
