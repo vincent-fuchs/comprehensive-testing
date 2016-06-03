@@ -2,4 +2,6 @@
 
 
 # comprehensive-testing
+
+[![Join the chat at https://gitter.im/vincent-fuchs/comprehensive-testing](https://badges.gitter.im/vincent-fuchs/comprehensive-testing.svg)](https://gitter.im/vincent-fuchs/comprehensive-testing?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 a sample app to demonstrate how to build a comprehensive testing strategy
